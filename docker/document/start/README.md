@@ -1,3 +1,3 @@
 1. Get Started:
-    1.1 Part 1: [Orientation](./getStart_1.md)
-    1.2 Part 2: Containers
+    - Part 1: [Orientation](./getStart_1.md)
+    - Part 2: Containers
