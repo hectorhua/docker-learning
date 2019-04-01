@@ -4,4 +4,4 @@
 
 1. Get Started:
     - Part 1: [Orientation](./start/getStart_1.md)
-    - Part 2: Containers
+    - Part 2: [Containers](./start/getStart_2.md)
