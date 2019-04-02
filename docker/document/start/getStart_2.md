@@ -28,7 +28,7 @@ It’s time to begin building an app the Docker way. We start at the bottom of t
 * Services
 * Container (you are here)
 
-> * 服务站
+> * 服务栈
 > * 服务
 > * 容器（当前位置）
 
@@ -247,9 +247,9 @@ Go to that URL in a web browser to see the display content served up on a web pa
 
 > 在浏览器中输入上面的URL可以看到网页上显示的内容
 
-Note: If you are using Docker Toolbox on Windows 7, use the Docker Machine IP instead of localhost. For example, http://192.168.99.100:4000/. To find the IP address, use the command docker-machine ip.
+Note: If you are using Docker Toolbox on Windows 7, use the Docker Machine IP instead of localhost. For example, ```http://192.168.99.100:4000/```. To find the IP address, use the command docker-machine ip.
 
-> 如果您在Windows 7上使用Docker Toolbox，请使用Docker Machine IP替换localhost。例如，http://192.168.99.100:4000/。要查找IP地址，请使用命令docker-machine ip。
+> 如果您在Windows 7上使用Docker Toolbox，请使用Docker Machine IP替换localhost。例如，```http://192.168.99.100:4000/```。要查找IP地址，请使用命令docker-machine ip。
 
 You can also use the curl command in a shell to view the same content.
 
@@ -295,9 +295,9 @@ $ docker ps
 $ docker ps -a
 ```
 
-Notice that CONTAINER ID matches what’s on http://localhost:4000.
+Notice that CONTAINER ID matches what’s on ```http://localhost:4000```.
 
-> 记住容器ID对应的就是http://localhost:4000后面所运行的容器
+> 记住容器ID对应的就是```http://localhost:4000```后面所运行的容器
 
 Now use docker container stop to end the process, using the CONTAINER ID, like so:
 
