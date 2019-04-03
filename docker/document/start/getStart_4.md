@@ -182,7 +182,51 @@ The hard part is over. Now you just repeat the process you used in part 3 to dep
 
 > 最难的部分已经过去啦。现在仅需要重复第3部分的内容来向swarm集群中部署应用。需要牢记的是，只有管理者节点myvm1才能执行Docker指令，其他工作节点仅提供计算。
 
+#### Configure a docker-machine shell to the swarm manager 为swarm集群管理节点配置docker-machine的shell环境
 
+So far, you’ve been wrapping Docker commands in docker-machine ssh to talk to the VMs. Another option is to run docker-machine env <machine> to get and run a command that configures your current shell to talk to the Docker daemon on the VM. This method works better for the next step because it allows you to use your local docker-compose.yml file to deploy the app “remotely” without having to copy it anywhere.
 
+> 到目前为止，用户使用```docker-machine ssh```将命令发送到虚拟机。另外一种可行的方案是配置用户当前的shell环境使得能够直接向虚拟机上运行的Docker后端发送命令。这种方式在后面的操作步骤中更加便捷，因为可以将用户本地的编排文件直接部署到远程的节点，而不需要先把文件拷贝过去。
 
+Type docker-machine env myvm1, then copy-paste and run the command provided as the last line of the output to configure your shell to talk to myvm1, the swarm manager.
 
+> 发送```docker-machine env myvm1```命令，然后将返回结果的最后一行复制并运行，来实现配置本地终端连接到管理节点myvm1。
+
+The commands to configure your shell differ depending on whether you are Mac, Linux, or Windows, so examples of each are shown on the tabs below.
+
+> 在不同平台下，上面的配置命令有所差别，下面以Mac和Linux为例展示：
+
+DOCKER MACHINE SHELL ENVIRONMENT ON MAC OR LINUX
+
+Run docker-machine env myvm1 to get the command to configure your shell to talk to myvm1.
+
+> 执行```docker-machine env myvm1 ```配置连接myvm1：
+
+```
+$ docker-machine env myvm1
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/sam/.docker/machine/machines/myvm1"
+export DOCKER_MACHINE_NAME="myvm1"
+# Run this command to configure your shell:
+# eval $(docker-machine env myvm1)
+```
+
+Run the given command to configure your shell to talk to myvm1.
+
+> 执行给出的命令
+
+```
+eval $(docker-machine env myvm1)
+```
+
+Run docker-machine ls to verify that myvm1 is now the active machine, as indicated by the asterisk next to it.
+
+> 执行```docker-machine ls```确认myvm1现在是一个有效状态的服务器，查看下面显示的星号*是否存在：
+
+```
+$ docker-machine ls
+NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
+myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v17.06.2-ce
+myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v17.06.2-ce
+```
